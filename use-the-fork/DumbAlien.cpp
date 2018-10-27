@@ -22,14 +22,14 @@ void DumbAlien::setTarget( std::shared_ptr<sf::CircleShape> newTarget ) {
 
 void DumbAlien::step() {
 	if (getPosition().x>1300) {
-		move(0,5);
+		move(0,10);
 		mDirection = -1 * mDirection;
 	}
 	if (getPosition().x<60) {
-		move(0,5);
+		move(0,10);
 		mDirection = -1 * mDirection;
 	}
-	move( mDirection, 0);
+	move( mDirection * 10, 0);
 
 }
 

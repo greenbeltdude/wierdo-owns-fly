@@ -9,7 +9,9 @@ find_package(SFML 2 REQUIRED network audio graphics window system)
 add_executable(use-the-fork 
 	use-the-fork.cpp
 	DumbAlien.cpp
-        TrackingAlien.cpp )
+    DumbAlienArmy.cpp
+    TrackingAlien.cpp
+    TrackingAlienArmy.cpp )
 
 target_include_directories( use-the-fork PUBLIC ${SFML_INCLUDE_DIR})
 target_link_libraries( use-the-fork PUBLIC ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

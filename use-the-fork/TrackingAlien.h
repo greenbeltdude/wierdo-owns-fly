@@ -14,7 +14,7 @@
 class TrackingAlien : public sf::CircleShape
 {
 public:
-	TrackingAlien( int radius );
+	TrackingAlien( int radius = 5 );
 	virtual ~TrackingAlien();
 
 	void setTarget( std::shared_ptr<sf::CircleShape> newTarget );

@@ -5,17 +5,21 @@
  *      Author: george
  */
 
-#ifndef DUMBALIEN_H_
-#define DUMBALIEN_H_
+#ifndef DUMBALIENARMY_H_
+#define DUMBALIENARMY_H_
+
+#include "DumbAlien.h"
 
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-class DumbAlien : public sf::CircleShape
+class DumbAlienArmy : public std::vector<std::shared_ptr<DumbAlien>>
 {
 public:
-	DumbAlien( int radius = 5 );
-	virtual ~DumbAlien();
+	DumbAlienArmy( int column, int rows );
+	virtual ~DumbAlienArmy();
+
+	void setFillColor( sf::Color newColor );
 
 	void setTarget( std::shared_ptr<sf::CircleShape> newTarget );
 

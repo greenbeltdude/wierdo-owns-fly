@@ -1,5 +1,5 @@
-#include "DumbAlien.h"
-#include "TrackingAlien.h"
+#include "DumbAlienArmy.h"
+#include "TrackingAlienArmy.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -10,8 +10,8 @@ int main()
         sf::RenderWindow window(sf::VideoMode(1366, 768), "The Wierdo Owns the Fly, Dude", sf::Style::Fullscreen);
         std::shared_ptr<sf::CircleShape> wierdo = std::make_shared<sf::CircleShape>(30);
         sf::CircleShape fly(15);
-        TrackingAlien alien(10);
-        DumbAlien dude(52);
+        TrackingAlienArmy alien(3,3);
+        DumbAlienArmy dude(5,5);
 
         wierdo->setFillColor(sf::Color::Green);
         fly.setFillColor(sf::Color::Red);
@@ -20,8 +20,6 @@ int main()
 
         fly.setPosition(683,0);
         wierdo->setPosition(683,708);
-        alien.setPosition(100,0);
-        dude.setPosition(300,25);
 
         alien.setTarget( wierdo );
         dude.setTarget(wierdo);
@@ -58,8 +56,8 @@ int main()
                 window.clear();
                 window.draw(*(wierdo.get()));
                 window.draw(fly);
-                window.draw(alien);
-                window.draw(dude);
+                for( auto &soldier : alien ) window.draw( *(soldier.get()) );
+                for( auto &soldier : dude ) window.draw( *(soldier.get()) );
                 window.display();
 
                 if (wierdo->getGlobalBounds().intersects(fly.getGlobalBounds()))
@@ -67,11 +65,13 @@ int main()
                         window.close();
                         std::cout << "Fly! Wins!\n" << std::endl;
                 }
-                if (wierdo->getGlobalBounds().intersects(alien.getGlobalBounds()))
-                 {
-                         window.close();
-                         std::cout << "Alien Wins!\n" << std::endl;
+                for( auto &soldier : alien ) {
+                	if (wierdo->getGlobalBounds().intersects(soldier->getGlobalBounds()))
+                	{
+                		window.close();
+                		std::cout << "Alien Wins!\n" << std::endl;
                  }
+                }
                 if (clock.getElapsedTime().asSeconds() > 60)
                 {
                         window.close();
@@ -79,7 +79,9 @@ int main()
                 }
         }
         {
-        	wierdo->getGlobalBounds().intersects(dude.getGlobalBounds());
+        	for( auto &soldier : dude ) {
+        	    wierdo->getGlobalBounds().intersects(soldier->getGlobalBounds());
+        	}
         	window.close();
         	std::cout << "Dude Wins!" << std::endl;
         }
