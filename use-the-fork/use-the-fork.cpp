@@ -1,6 +1,6 @@
 #include "DumbAlienArmy.h"
 #include "TrackingAlienArmy.h"
-
+#include "Bullet.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -10,16 +10,19 @@ int main()
         sf::RenderWindow window(sf::VideoMode(1366, 768), "The Wierdo Owns the Fly, Dude", sf::Style::Fullscreen);
         std::shared_ptr<sf::CircleShape> wierdo = std::make_shared<sf::CircleShape>(30);
         sf::CircleShape fly(15);
-        TrackingAlienArmy alien(3,3);
+        TrackingAlienArmy alien(5,5);
         DumbAlienArmy dude(5,5);
+        Bullet bullet;
 
         wierdo->setFillColor(sf::Color::Green);
         fly.setFillColor(sf::Color::Red);
         alien.setFillColor(sf::Color::Yellow);
         dude.setFillColor(sf::Color::Magenta);
+        bullet.setFillColor(sf::Color::White);
 
         fly.setPosition(683,0);
         wierdo->setPosition(683,708);
+        bullet.setPosition(722,0);
 
         alien.setTarget( wierdo );
         dude.setTarget(wierdo);
@@ -50,6 +53,7 @@ int main()
                 	if (wierdo->getPosition().x < fly.getPosition().x) fly.move(-1,0);
                     dude.step();
                 	alien.step();
+                	bullet.step();
                 }
 
 
@@ -58,6 +62,8 @@ int main()
                 window.draw(fly);
                 for( auto &soldier : alien ) window.draw( *(soldier.get()) );
                 for( auto &soldier : dude ) window.draw( *(soldier.get()) );
+                window.draw(bullet);
+
                 window.display();
 
                 if (wierdo->getGlobalBounds().intersects(fly.getGlobalBounds()))
@@ -77,6 +83,10 @@ int main()
                         window.close();
                         std::cout << "Weirdo! Wins!\n" << std::endl;
                 }
+                {
+                	if (wierdo->getGlobalBounds().intersects(bullet.getGlobalBounds()));
+                }
+                std::cout << "Bullet Wins!!!!!!!!!!!!" << std::endl;
         }
         {
         	for( auto &soldier : dude ) {

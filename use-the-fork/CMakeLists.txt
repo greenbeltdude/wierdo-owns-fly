@@ -8,6 +8,7 @@ find_package(SFML 2 REQUIRED network audio graphics window system)
 
 add_executable(use-the-fork 
 	use-the-fork.cpp
+	Bullet.cpp
 	DumbAlien.cpp
     DumbAlienArmy.cpp
     TrackingAlien.cpp
