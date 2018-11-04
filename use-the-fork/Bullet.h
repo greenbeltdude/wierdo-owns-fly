@@ -9,11 +9,11 @@
 #define Bullet_H_
 
 #include "DumbAlien.h"
-
+#include "SpaceObject.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-class Bullet : public sf::RectangleShape
+class Bullet : public sf::RectangleShape, public SpaceObject
 {
 public:
 	Bullet( );

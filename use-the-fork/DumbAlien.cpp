@@ -9,6 +9,7 @@
 
 DumbAlien::DumbAlien( int radius ) :
 	sf::CircleShape( radius ),
+	SpaceObject( this ),
 	mDirection(1)
 {}
 

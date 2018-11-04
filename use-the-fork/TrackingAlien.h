@@ -8,10 +8,11 @@
 #ifndef TRACKINGALIEN_H_
 #define TRACKINGALIEN_H_
 
+#include "SpaceObject.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-class TrackingAlien : public sf::CircleShape
+class TrackingAlien : public sf::CircleShape, public SpaceObject
 {
 public:
 	TrackingAlien( int radius = 5 );

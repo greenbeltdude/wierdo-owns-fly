@@ -8,7 +8,8 @@
 #include "TrackingAlien.h"
 
 TrackingAlien::TrackingAlien( int radius ) :
-	sf::CircleShape( radius )
+	sf::CircleShape( radius ),
+	SpaceObject( this )
 {}
 
 

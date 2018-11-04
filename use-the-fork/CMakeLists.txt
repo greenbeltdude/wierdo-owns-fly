@@ -11,6 +11,9 @@ add_executable(use-the-fork
 	Bullet.cpp
 	DumbAlien.cpp
     DumbAlienArmy.cpp
+    Player.cpp
+    SpaceObject.cpp
+    SpaceObjectFactory.cpp
     TrackingAlien.cpp
     TrackingAlienArmy.cpp )
 

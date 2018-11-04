@@ -8,10 +8,12 @@
 #ifndef DUMBALIEN_H_
 #define DUMBALIEN_H_
 
+#include "SpaceObject.h"
+
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-class DumbAlien : public sf::CircleShape
+class DumbAlien : public sf::CircleShape, public virtual SpaceObject
 {
 public:
 	DumbAlien( int radius = 5 );
