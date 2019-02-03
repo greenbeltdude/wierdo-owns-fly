@@ -7,9 +7,18 @@
 
 #include "SpaceObjectFactory.h"
 
+std::shared_ptr<SpaceObjectFactory> SpaceObjectFactory_mInstance = nullptr;
+
 SpaceObjectFactory::SpaceObjectFactory() = default;
 
 SpaceObjectFactory::~SpaceObjectFactory() = default;
+
+std::shared_ptr<SpaceObjectFactory> SpaceObjectFactory::instance() {
+	if (SpaceObjectFactory_mInstance == nullptr) {
+		SpaceObjectFactory_mInstance = std::make_shared<SpaceObjectFactory>();
+	}
+	return SpaceObjectFactory_mInstance;
+}
 
 void SpaceObjectFactory::setTarget( std::shared_ptr<SpaceObject> newTarget ) {
 	mTarget = newTarget;

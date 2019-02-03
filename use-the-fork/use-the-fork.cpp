@@ -16,11 +16,10 @@ int main() {
 	DumbAlienArmy dude(5,5);
 
 	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>();
-	SpaceObjectFactory objectFactory;
-	for( auto &soldier : alien ) objectFactory.push_back(soldier);
-	for( auto &soldier : dude ) objectFactory.push_back( soldier );
-	objectFactory.push_back(bullet);
-	objectFactory.setTarget(player);
+	for( auto &soldier : alien ) SpaceObjectFactory::instance()->push_back(soldier);
+	for( auto &soldier : dude ) SpaceObjectFactory::instance()->push_back( soldier );
+	//objectFactory.push_back(bullet);
+	SpaceObjectFactory::instance()->setTarget(player);
 
 	player->setFillColor(sf::Color::Green);
 	//fly.setFillColor(sf::Color::Red);
@@ -35,8 +34,9 @@ int main() {
 	alien.setTarget( player );
 	dude.setTarget(player);
 
+
 	sf::Clock clock;
-	int oldElapseTime = 10;
+	int oldElapseTime = 666;
 
 	while (window.isOpen())
 	{
@@ -44,14 +44,14 @@ int main() {
 
 		if ( clock.getElapsedTime().asMilliseconds() > (oldElapseTime + 10) ) {
 			oldElapseTime = clock.getElapsedTime().asMilliseconds();
-			objectFactory.step();
-			if ( objectFactory.checkForCollisions() ) {
+			SpaceObjectFactory::instance()->step();
+			if ( SpaceObjectFactory::instance()->checkForCollisions() ) {
 				window.close();
 				std::cout << "Alien Wins!\n" << std::endl;
 			}
 			window.clear();
 			window.draw(*(player.get()));
-			for( auto &object : objectFactory) window.draw( *(object->shape()) );
+			for( auto &object : *(SpaceObjectFactory::instance().get())) window.draw( *(object->shape()) );
 			window.display();
 		}
 		if (clock.getElapsedTime().asSeconds() > 60) {

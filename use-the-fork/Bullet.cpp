@@ -16,11 +16,17 @@ Bullet::Bullet() :
 
 Bullet::~Bullet() = default;
 
+void Bullet::setDirection( int newDirection ) {
+  mDirection = newDirection;
+}
+void Bullet::setSpeed( int newSpeed ) {
+  mSpeed = newSpeed;
+}
 
 
 
 void Bullet::step() {
-	move( 0, mDirection * 1);
+	move( 0, mDirection * mSpeed);
 
 }
 

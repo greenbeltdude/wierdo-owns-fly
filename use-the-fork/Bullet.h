@@ -19,12 +19,15 @@ public:
 	Bullet( );
 	virtual ~Bullet();
 
+	void setDirection( int newDirection );
 	void step();
+	void setSpeed( int newSpeed );
+
 
 private:
 
 	int mDirection;
-
+    int mSpeed;
 };
 
 

@@ -17,8 +17,12 @@ class SpaceObjectFactory : public std::vector<std::shared_ptr<SpaceObject>>
 {
 public:
 	SpaceObjectFactory();
+
+public:
 	virtual ~SpaceObjectFactory();
 
+	static std::shared_ptr<SpaceObjectFactory> instance();
+	
 	bool checkForCollisions();
 
 	void setTarget( std::shared_ptr<SpaceObject> newTarget );
@@ -30,6 +34,5 @@ private:
 	std::shared_ptr<SpaceObject> mTarget;
 
 };
-
 
 #endif
