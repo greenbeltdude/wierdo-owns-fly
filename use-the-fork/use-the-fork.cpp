@@ -3,6 +3,7 @@
 #include "TrackingAlienArmy.h"
 #include "Bullet.h"
 #include "Player.h"
+#include "CircleAlien.h"
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
@@ -16,9 +17,10 @@ int main() {
 	DumbAlienArmy dude(5,5);
 
 	std::shared_ptr<Bullet> bullet = std::make_shared<Bullet>();
+	std::shared_ptr<CircleAlien> circle = std::make_shared<CircleAlien>();
 	for( auto &soldier : alien ) SpaceObjectFactory::instance()->push_back(soldier);
 	for( auto &soldier : dude ) SpaceObjectFactory::instance()->push_back( soldier );
-	//objectFactory.push_back(bullet);
+	SpaceObjectFactory::instance()->push_back(circle);
 	SpaceObjectFactory::instance()->setTarget(player);
 
 	player->setFillColor(sf::Color::Green);
@@ -26,11 +28,12 @@ int main() {
 	alien.setFillColor(sf::Color::Yellow);
 	dude.setFillColor(sf::Color::Magenta);
 	bullet->setFillColor(sf::Color::White);
+	circle->setFillColor(sf::Color::Red);
 
 	//fly.setPosition(683,0);
 	player->setPosition(683,708);
 	bullet->setPosition(722,0);
-
+	//circle->setPosition(683,0);
 	alien.setTarget( player );
 	dude.setTarget(player);
 

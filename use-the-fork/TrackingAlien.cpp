@@ -2,7 +2,7 @@
  * TrackingAlien.cpp
  *
  *  Created on: Oct 20, 2018
- *      Author: george
+ *      Author: George
  */
 
 #include "TrackingAlien.h"
