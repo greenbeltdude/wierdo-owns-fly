@@ -19,6 +19,8 @@ public:
 	virtual ~SpaceObject();
 
 	bool isExploding() const;
+	
+	void setIsExploding();
 
 	virtual void step() = 0;
 

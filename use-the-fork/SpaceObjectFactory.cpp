@@ -32,9 +32,25 @@ void SpaceObjectFactory::step() {
 }
 
 bool SpaceObjectFactory::checkForCollisions() {
+	for( auto &object1 : *this ) {
+		for( auto &object2 : *this ) {
+			if(object1!=object2) {
+				if( object1->shape()->getGlobalBounds().intersects(object2->shape()->getGlobalBounds())) {
+					object1->setIsExploding();
+					object2->setIsExploding();
+				}
+			}
+		}
+	}
+	
+	
 	for( auto &object : *this ) {
 		if( mTarget->shape()->getGlobalBounds().intersects(object->shape()->getGlobalBounds())) return true;
 	}
-
+	for( unsigned int ii=0; ii<size(); ii++ ) {
+		if (at(ii)->isExploding()){
+			this->erase(begin()+ii);
+		}
+	}
 	return false;
 }

@@ -9,7 +9,7 @@
 
 
 SpaceObject::SpaceObject( sf::Shape *shape ) :
-mShape( shape )
+mShape( shape ),mIsExploding(false),mDestroyed(false)
 {}
 
 SpaceObject::~SpaceObject() = default;
@@ -17,7 +17,9 @@ SpaceObject::~SpaceObject() = default;
 bool SpaceObject::isExploding() const {
 	return mIsExploding;
 }
-
+void SpaceObject::setIsExploding(){
+	mIsExploding=true;
+}
 bool SpaceObject::destroyed() const {
 		return mDestroyed;
 }
