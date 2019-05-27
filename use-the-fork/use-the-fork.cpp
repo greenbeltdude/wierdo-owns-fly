@@ -24,7 +24,6 @@ int main() {
 	SpaceObjectFactory::instance()->setTarget(player);
 
 	player->setFillColor(sf::Color::Green);
-	//fly.setFillColor(sf::Color::Red);
 	alien.setFillColor(sf::Color::Yellow);
 	dude.setFillColor(sf::Color::Magenta);
 	bullet->setFillColor(sf::Color::White);
