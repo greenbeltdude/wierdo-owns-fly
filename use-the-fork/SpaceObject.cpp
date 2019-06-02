@@ -9,7 +9,8 @@
 
 
 SpaceObject::SpaceObject( sf::Shape *shape ) :
-mShape( shape ),mIsExploding(false),mDestroyed(false)
+mShape( shape ),mIsExploding(false),mDestroyed(false),
+mType("Unknown"),mValue(0)
 {}
 
 SpaceObject::~SpaceObject() = default;
@@ -27,4 +28,19 @@ bool SpaceObject::destroyed() const {
 
 sf::Shape *SpaceObject::shape() const {
 	return mShape;
+
+
+
+}
+int SpaceObject::value() const {
+	return mValue;
+}
+void SpaceObject::setValue(int newvalue){
+mValue=newvalue;
+}
+std::string SpaceObject::type() const {
+    return mType;
+}
+void SpaceObject::setType(std::string newtype){
+mType=newtype;
 }

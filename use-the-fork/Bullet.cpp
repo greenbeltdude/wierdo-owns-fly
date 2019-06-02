@@ -11,7 +11,9 @@ Bullet::Bullet() :
 	sf::RectangleShape( sf::Vector2f(14, 28) ),
 	SpaceObject( this ),
 	mDirection(1)
-{}
+{
+	setType("bullet");
+}
 
 
 Bullet::~Bullet() = default;

@@ -21,18 +21,29 @@ public:
 	bool isExploding() const;
 	
 	void setIsExploding();
-
+	
+	std::string type() const;
+	
+	void setType(std::string newtype);
+	
+	int value() const;
+	
+	void setValue(int newvalue);
+	
 	virtual void step() = 0;
 
 	bool destroyed() const;
 
 	sf::Shape *shape() const;
 
+
 private:
 
 	bool mIsExploding;
 	bool mDestroyed;
 	sf::Shape *mShape;
+	std::string mType;
+	int mValue;
 
 };
 

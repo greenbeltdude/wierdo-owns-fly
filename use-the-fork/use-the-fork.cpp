@@ -57,9 +57,12 @@ int main() {
 			for( auto &object : *(SpaceObjectFactory::instance().get())) window.draw( *(object->shape()) );
 			window.display();
 		}
-		if (clock.getElapsedTime().asSeconds() > 60) {
+		if (clock.getElapsedTime().asSeconds() > 10) {
 			window.close();
-			std::cout << "You win!\n" << std::endl;
+			std::cout << "You win!\n You scored " <<
+					SpaceObjectFactory::instance()->score()
+					<< " points!" << std::endl;
+
 		}
 
 	}

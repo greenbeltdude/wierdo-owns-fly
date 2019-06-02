@@ -49,8 +49,17 @@ bool SpaceObjectFactory::checkForCollisions() {
 	}
 	for( unsigned int ii=0; ii<size(); ii++ ) {
 		if (at(ii)->isExploding()){
+			mScore = mScore + at(ii)->value();
 			this->erase(begin()+ii);
 		}
 	}
 	return false;
 }
+
+	int SpaceObjectFactory::score() const{
+		return mScore;
+	}
+	
+	
+	
+	

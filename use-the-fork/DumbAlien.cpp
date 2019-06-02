@@ -11,7 +11,10 @@ DumbAlien::DumbAlien( int radius ) :
 	sf::CircleShape( radius ),
 	SpaceObject( this ),
 	mDirection(1)
-{}
+{
+	setValue(19);
+	setType("DumbAlien");
+}
 
 
 DumbAlien::~DumbAlien() = default;

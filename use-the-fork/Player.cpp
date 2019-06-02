@@ -14,7 +14,9 @@
 Player::Player( int radius ) :
 	sf::CircleShape( radius ),
 	SpaceObject( this )
-{}
+{
+setType("player");
+}
 
 
 Player::~Player() = default;

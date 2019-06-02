@@ -10,7 +10,10 @@
 TrackingAlien::TrackingAlien( int radius ) :
 	sf::CircleShape( radius ),
 	SpaceObject( this )
-{}
+{
+setType("TrackingAlien");
+setValue(34);
+}
 
 
 TrackingAlien::~TrackingAlien() = default;

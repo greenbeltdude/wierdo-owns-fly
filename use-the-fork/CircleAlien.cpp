@@ -15,7 +15,10 @@ CircleAlien::CircleAlien( int radius ) :
 xcenter(780),
 ycenter(0),
 angle(0)
-{}
+{
+setType("CircleAlien");
+setValue(47);
+}
 
 
 CircleAlien::~CircleAlien() = default;

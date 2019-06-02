@@ -28,11 +28,11 @@ public:
 	void setTarget( std::shared_ptr<SpaceObject> newTarget );
 
     void step();
-
+    int score() const;
 private:
 
 	std::shared_ptr<SpaceObject> mTarget;
-
+	int mScore;
 };
 
 #endif
